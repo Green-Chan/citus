@@ -803,7 +803,8 @@ AdjustMaxPreparedTransactions(void)
 	 * leave the configuration alone - there might have been intent behind the
 	 * decision.
 	 */
-	if (max_prepared_xacts == 0)
+	struct config_generic *gconf = find_option("max_prepared_transactions", true, false, 0);
+	if (gconf->source == PGC_S_DEFAULT)
 	{
 		char newvalue[12];
 
