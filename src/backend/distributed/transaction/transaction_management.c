@@ -808,7 +808,8 @@ AdjustMaxPreparedTransactions(void)
 	 * so check if it's value is default.
 	 */
 #if PG_VERSION_NUM >= PG_VERSION_16
-	struct config_generic *gconf = find_option("max_prepared_transactions", true, false, 0);
+	struct config_generic *gconf = find_option("max_prepared_transactions",
+											   true, false, 0);
 	if (gconf->source == PGC_S_DEFAULT)
 #else
 	if (max_prepared_xacts == 0)
